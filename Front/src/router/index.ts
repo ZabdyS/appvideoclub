@@ -1,5 +1,6 @@
-// Composables
 import { createRouter, createWebHistory } from 'vue-router'
+
+import { useAuthStore } from '@/store/auth';
 
 const routes = [
   {
@@ -74,13 +75,29 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "home" */ '@/views/Empleados.vue'),
   },
-  
+  /* {
+    path: '/',
+    name: 'Login',
+    component: () => import('@/views/Login.vue'),
+  }, */
 ];
-
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
-})
+});
+
+// Interceptor para manejar respuestas con código de estado 401
+/* const authStore = useAuthStore(); // Obtén la instancia del módulo 'authStore'
+
+router.beforeEach((to, from, next) => {
+  if (to.path !== '/login' && !authStore.authenticated) {
+    next({ path: '/login' });
+  } else if (to.path === '/login' && authStore.authenticated) {
+    next({ path: '/' });
+  } else {
+    next();
+  }
+}); */
 
 export default router

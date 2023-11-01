@@ -6,24 +6,26 @@ export const useAuthStore = defineStore({
   state: () => ({
     user: {}, // Aquí puedes almacenar los datos del usuario autenticado
     error: {}, // Para manejar errores de autenticación
+    authenticated: false, // Indicador de autenticación
   }),
 
   actions: {
     async login(username: string, password: string) {
       try {
-       
         if (username === 'user' && password === 'password') {
           this.user = { username: 'user' }; // Asigna los datos del usuario autenticado
+          this.authenticated = true; // Establece la autenticación en true
           return true; // Autenticación exitosa
         } else {
           this.error = 'Credenciales inválidas';
+          this.authenticated = false; // Establece la autenticación en false
           return false; // Autenticación fallida
         }
       } catch (error: any) {
         this.error = error.message || 'Error de autenticación';
+        this.authenticated = false; // Establece la autenticación en false
         return false; // Autenticación fallida
       }
     },
-    // Agrega acciones para el cierre de sesión u otras operaciones de autenticación si es necesario.
   },
 });

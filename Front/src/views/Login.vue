@@ -3,6 +3,7 @@
   </template>
   
   <script lang="ts" setup>
-    import Login from '@/components/mantenimientos/Login.vue.js'
+    import Login from '@/components/login/Login.vue.js'
   </script>
+  
   
