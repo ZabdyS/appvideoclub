@@ -14,7 +14,8 @@
     "lib": ["esnext", "dom"],
     "types": [
       "node",
-      "vuetify"
+      "vuetify",
+      "vee-validate"
     ],
     "paths": {
       "@/*": ["src/*"]
